@@ -1,55 +1,64 @@
 {
-  "name": "electron-vite-app",
-  "private": true,
-  "version": "1.0.0",
-  "description": "An electron app with Vue 3 + Vite + Typescript",
-  "author": "Youness Jabboua",
-  "main": "electron/main.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
-    "electron:pack": "electron-builder --dir",
-    "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
-    "electron:builder": "electron-builder",
-    "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
-    "app:build": "yarn build:for:electron && yarn electron:builder"
-  },
-  "dependencies": {
-    "vue": "^3.2.25",
-    "vue-router": "4"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "concurrently": "^7.2.2",
-    "cross-env": "^7.0.3",
-    "electron": "^19.0.6",
-    "electron-builder": "^23.1.0",
-    "sass": "^1.53.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9",
-    "vue-tsc": "^0.34.7",
-    "wait-on": "^6.0.1"
-  },
-  "build": {
-    "appId": "com.bearcode.vue-app",
-    "productName": "MyApp",
-    "copyright": "Copyright © 2022 Youness",
-    "mac": {
-      "category": "public.app-category.utilities"
+    "name": "electron-vite-app",
+    "private": true,
+    "version": "1.0.0",
+    "description": "An electron app with Vue 3 + Vite + Typescript",
+    "author": "Youness Jabboua",
+    "main": "electron/main.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
+        "electron:pack": "electron-builder --dir",
+        "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
+        "electron:builder": "electron-builder",
+        "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
+        "app:build": "yarn build:for:electron && yarn electron:builder",
+        "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src",
+        "format": "prettier . --write"
     },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+    "dependencies": {
+        "vue": "^3.2.25",
+        "vue-router": "4"
     },
-    "files": [
-      "dist/**/*",
-      "electron/**/*"
-    ],
-    "directories": {
-      "buildResources": "assets",
-      "output": "dist_electron"
+    "devDependencies": {
+        "@babel/core": "^7.18.6",
+        "@typescript-eslint/eslint-plugin": "^5.30.4",
+        "@typescript-eslint/parser": "^5.30.4",
+        "@vitejs/plugin-vue": "^2.3.3",
+        "concurrently": "^7.2.2",
+        "cross-env": "^7.0.3",
+        "electron": "^19.0.6",
+        "electron-builder": "^23.1.0",
+        "eslint": "^8.19.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-vue": "^9.1.1",
+        "prettier": "^2.7.1",
+        "sass": "^1.53.0",
+        "typescript": "^4.7.4",
+        "vite": "^2.9.9",
+        "vue-tsc": "^0.34.7",
+        "wait-on": "^6.0.1"
+    },
+    "build": {
+        "appId": "com.bearcode.vue-app",
+        "productName": "MyApp",
+        "copyright": "Copyright © 2022 Youness",
+        "mac": {
+            "category": "public.app-category.utilities"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "files": [
+            "dist/**/*",
+            "electron/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets",
+            "output": "dist_electron"
+        }
     }
-  }
 }

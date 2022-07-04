@@ -4,25 +4,30 @@ This template should help get you started developing with Vue 3 and TypeScript i
 
 ## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+-   [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## Commands
 
 Run yarn electron:dev to work with electron in development mode.
+
 ```shell
 yarn electron:dev
 ```
 
 Run yarn app:build to build your electron app.
+
 ```shell
 yarn app:build
 ```
 
 Run yarn dev to open vite in browser in development mode.
+
 ```shell
 yarn dev
 ```
+
 Run yarn build to build files and can be served.
+
 ```shell
 yarn build
 ```
