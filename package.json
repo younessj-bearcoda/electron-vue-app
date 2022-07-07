@@ -9,10 +9,10 @@
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
         "preview": "vite preview",
-        "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
-        "electron:main": "tsc electron/main.ts electron/preload.ts electron/devtools.ts --outDir electron/build/",
+        "electron:start": "concurrently \"yarn electron:main\" \"wait-on tcp:3000 && cross-env IS_DEV=true electron .\"",
+        "electron:main": "tsc electron/main.ts electron/preload.ts --outDir electron/build/",
         "electron:pack": "electron-builder --dir",
-        "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
+        "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron:start\"",
         "electron:builder": "electron-builder",
         "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
         "app:build": "yarn build:for:electron && yarn electron:builder",
@@ -24,7 +24,7 @@
         "bootstrap": "5.2.0-beta1",
         "pinia": "^2.0.14",
         "vue": "^3.2.25",
-        "vue-router": "4"
+        "vue-router": "^4.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.18.6",
