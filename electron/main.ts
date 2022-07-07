@@ -1,6 +1,6 @@
+import { app, BrowserWindow } from 'electron'
+import installDevTools from './devtools'
 const path = require('path')
-const { app, BrowserWindow } = require('electron')
-
 const isDev = process.env.IS_DEV === 'true'
 
 function createWindow() {
@@ -9,22 +9,26 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
+            preload: path.join(__dirname, './preload.js'),
             nodeIntegration: true,
         },
     })
 
     // and load the index.html of the app.
     // win.loadFile("index.html");
-    mainWindow.loadURL(
-        isDev
-            ? 'http://localhost:3000'
-            : `file://${path.join(__dirname, '../dist/index.html')}`
-    )
+    mainWindow
+        .loadURL(
+            isDev
+                ? 'http://localhost:3000'
+                : `file://${path.join(__dirname, '../dist/index.html')}`
+        )
+        .then((r) => {})
 
     // Open the DevTools.
     if (isDev) {
-        mainWindow.webContents.openDevTools()
+        installDevTools().then(() => {
+            // mainWindow.webContents.openDevTools()
+        })
     }
 }
 
@@ -33,7 +37,8 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     createWindow()
-    app.on('activate', function () {
+
+    app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import * as path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,17 +8,9 @@ export default defineConfig({
     plugins: [vue()],
     resolve: {
         alias: {
+            '@': path.resolve(__dirname, './src'),
             vue: 'vue/dist/vue.esm-bundler.js',
-        },
-    },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: [
-                    '@import "variables.scss";',
-                    '@import "_helpers.scss";',
-                ].join('\n'),
-            },
+            '~bootstrap': 'bootstrap',
         },
     },
 })

@@ -1,5 +1,5 @@
-import Home from './pages/Home'
-import About from './pages/About'
+import Home from '@/pages/Home'
+import About from '@/pages/About'
 import { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
