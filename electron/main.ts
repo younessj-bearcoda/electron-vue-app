@@ -1,7 +1,10 @@
 import { app, BrowserWindow } from 'electron'
+import { initialize, enable } from '@electron/remote/main'
 import installDevTools from './devtools'
 const path = require('path')
 const isDev = process.env.IS_DEV === 'true'
+
+initialize()
 
 function createWindow() {
     // Create the browser window.
@@ -30,6 +33,8 @@ function createWindow() {
             // mainWindow.webContents.openDevTools()
         })
     }
+
+    enable(mainWindow.webContents)
 }
 
 // This method will be called when Electron has finished

@@ -3,7 +3,7 @@ import App from './App'
 import router from './router'
 import stores from './stores'
 
-import './assets/sass/main.scss'
+import './assets/styles/main.css'
 
 const app = createApp(App)
 

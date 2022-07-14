@@ -12,7 +12,12 @@ type CounterActions = {
     increment: () => void
 }
 
-export default defineStore<string, CounterState, CounterGetters, CounterActions>('counterStore', {
+export default defineStore<
+    string,
+    CounterState,
+    CounterGetters,
+    CounterActions
+>('counterStore', {
     // State
     //------------------------
     state: () => ({
@@ -22,7 +27,7 @@ export default defineStore<string, CounterState, CounterGetters, CounterActions>
     // Getters
     //------------------------
     getters: {
-        isZero: ({counter}): boolean => counter === 0,
+        isZero: ({ counter }): boolean => counter === 0,
     },
 
     // Actions

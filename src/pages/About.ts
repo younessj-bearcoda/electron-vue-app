@@ -6,7 +6,7 @@ export default defineComponent({
         Counter,
     },
     template: `
-        <h1>About Page</h1>
+        <h1 class="text-3xl font-bold underline">About Page</h1>
         <Counter/>
     `,
 })
