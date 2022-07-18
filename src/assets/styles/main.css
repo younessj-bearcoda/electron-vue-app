@@ -8,3 +8,44 @@
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
 }
+
+.window-controls {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.main-page {
+    display: grid;
+    grid-template-rows: 60px 1fr minmax(150px, auto);
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+        'main-header   main-header  main-header'
+        'sidebar-left  main-canvas  sidebar-right'
+        'main-footer   main-footer  main-footer';
+}
+
+.main-header {
+    grid-area: main-header;
+}
+
+.main-canvas {
+    grid-area: main-canvas;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-right {
+    grid-area: sidebar-right;
+}
+
+.sidebar-left {
+    grid-area: sidebar-left;
+}
+
+.main-footer {
+    grid-area: main-footer;
+}
